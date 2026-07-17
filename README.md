@@ -1,6 +1,6 @@
 # Poetic Call
 
-[Poetic Call](https://your-app-name.streamlit.app/) is an AI-powered poetry generation tool that creates beautiful poems based on your chosen subject and language. Using advanced language models, it generates creative and personalized poetry through a simple and user-friendly interface.
+[Poetic Call](https://poeticcall.streamlit.app/) is an AI-powered poetry generation tool that creates beautiful poems based on your chosen subject and language. Using advanced language models, it generates creative and personalized poetry through a simple and user-friendly interface.
 
 ## Features
 
@@ -27,4 +27,4 @@
 
 Try Poetic Call here:
 
-https://your-app-name.streamlit.app/
+https://poeticcall.streamlit.app/
