@@ -32,7 +32,7 @@ language = st.text_input("Language of Poetry")
 
 
 form = st.form(key="my-form")
-submit = form.form_submit_button("Submit")
+submit = form.form_submit_button("Generate")
 
 
 if submit:
