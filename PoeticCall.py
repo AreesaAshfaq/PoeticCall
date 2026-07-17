@@ -1,22 +1,42 @@
 import streamlit as st
-import openai
+from groq import Groq
+
+client = Groq(api_key=st.secrets["GROQ_API_KEY"])
+
+def gptPoetry(subject, language):
+
+    prompt = f"Generate a poem about {subject} in {language}."
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        max_tokens=1000,
+        temperature=0.7
+    )
+
+    return response.choices[0].message.content
 
 
-def gptPoetry(UserInput):
+st.markdown(
+    "<h1 style='text-align: center; color: black;'>Welcome to Poetic Call</h1>",
+    unsafe_allow_html=True
+)
 
-  response = openai.Completion.create(model="text-davinci-003", prompt=UserInput, max_tokens=1000, temperature = 0.7)
-  return response.choices[0]['text']
-  
-st.markdown("<h1 style='text-align: center; color: black;'> Welcome to Poetic Call</h1>", unsafe_allow_html=True)
+subject = st.text_input("Subject of Poetry")
+language = st.text_input("Language of Poetry")
 
-st.subject = st.text_input('Subject of Poetry', placeholder=None)
-st.language = st.text_input('Language of Poetry', placeholder=None)
 
-st.query = 'genrate' + st.subject + 'poetry in' + st.language 
+form = st.form(key="my-form")
+submit = form.form_submit_button("Submit")
 
-form = st.form(key='my-form')
-submit = form.form_submit_button('Submit')
 
 if submit:
-  st.write(gptPoetry(st.query))
-st.write(' ')
+    poem = gptPoetry(subject, language)
+    st.write(poem)
+
+st.write(" ")
